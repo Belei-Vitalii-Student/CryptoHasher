@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.crypto.hasher.cryptohasher.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
-</VBox>
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.crypto.hasher.cryptohasher.CryptoHasherController">
+  <tabs>
+    <Tab text="Hasher">
+      <content>
+        <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <AnchorPane layoutX="13.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="179.0" prefWidth="573.0" style="-fx-background-color: #00bfff; -fx-background-radius: 10;" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                     <children>
+                        <Button fx:id="choose_btn" alignment="CENTER" contentDisplay="RIGHT" layoutX="472.0" layoutY="18.0" mnemonicParsing="false" onAction="#fileSelector" style="-fx-background-radius: 5; -fx-background-color: aqua;" text="Choose file 📁" textAlignment="RIGHT" textFill="#0a0a0a" textOverrun="WORD_ELLIPSIS" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="18.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTENT" wrappingWidth="142.13671875" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="17.0">
+                           <font>
+                              <Font name="System Bold Italic" size="28.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="text_preview" layoutX="14.0" layoutY="60.0" prefHeight="66.0" prefWidth="418.0" wrapText="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="60.0" />
+                        <Label fx:id="file_path" layoutX="439.0" layoutY="60.0" prefHeight="42.0" prefWidth="120.0" wrapText="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="file_size" layoutX="439.0" layoutY="101.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="20.0" prefWidth="120.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="101.0">
+                           <font>
+                              <Font name="System Bold" size="12.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Chart">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>

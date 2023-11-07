@@ -85,7 +85,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.crypto.hasher.cryptohasher/com.crypto.hasher.cryptohasher.HelloApplication
+                            <mainClass>com.crypto.hasher.cryptohasher/com.crypto.hasher.cryptohasher.CryptoHasherApplication
                             </mainClass>
                         </configuration>
                     </execution>
