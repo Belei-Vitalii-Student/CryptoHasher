@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Slider?>
@@ -9,6 +12,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -64,14 +68,41 @@
                               </Button>
                            </children>
                         </HBox>
-                        <TextArea fx:id="hash_text" layoutX="141.0" layoutY="14.0" prefHeight="118.0" prefWidth="418.0" wrapText="true" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
                         <Spinner fx:id="bit_spinner" editable="true" layoutX="14.0" layoutY="42.0" onKeyReleased="#updateBitSpinner" onKeyTyped="#updateBitSpinner" prefHeight="25.0" prefWidth="107.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0" />
                         <Slider fx:id="bit_slider" blockIncrement="1.0" layoutX="13.0" layoutY="71.0" onMouseDragged="#onSliderChange" prefHeight="14.0" prefWidth="110.0" showTickMarks="true" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="13.0" />
-                        <Button fx:id="bit_change_btn" alignment="CENTER" contentDisplay="RIGHT" layoutX="14.0" layoutY="98.0" mnemonicParsing="false" onAction="#changeBit" prefHeight="30.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-background-color: aqua;" text="Change 📝" textAlignment="RIGHT" textFill="#4242ff" textOverrun="WORD_ELLIPSIS" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="14.0">
+                        <Button fx:id="bit_change_btn" alignment="CENTER" contentDisplay="RIGHT" layoutX="14.0" layoutY="98.0" mnemonicParsing="false" onAction="#changeBit" prefHeight="30.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-background-color: aqua;" text="Change bit 📝" textAlignment="RIGHT" textFill="#4242ff" textOverrun="WORD_ELLIPSIS" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="14.0">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
+                        <HBox alignment="CENTER" layoutX="142.0" layoutY="9.0" prefHeight="124.0" prefWidth="423.0" spacing="5.0" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="142.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="9.0">
+                           <children>
+                              <TextArea fx:id="hash_text" prefHeight="118.0" prefWidth="174.0" promptText="Hash" style="-fx-text-fill: gray;" wrapText="true">
+                                 <font>
+                                    <Font name="Calibri Bold" size="18.0" />
+                                 </font>
+                              </TextArea>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="34.0" prefWidth="88.0" text="Competitor" textFill="#0039e4" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="bit_changed" alignment="CENTER" contentDisplay="CENTER" prefHeight="51.0" prefWidth="88.0" text="Bit changes: " textAlignment="CENTER" textFill="WHITE" underline="true" wrapText="true">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <TextArea fx:id="hash_text_after" prefHeight="118.0" prefWidth="174.0" promptText="Hash (after)" style="-fx-text-fill: gray;" wrapText="true">
+                                 <font>
+                                    <Font name="Calibri Bold" size="18.0" />
+                                 </font>
+                              </TextArea>
+                           </children>
+                        </HBox>
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
@@ -79,7 +110,17 @@
     </Tab>
     <Tab text="Chart">
       <content>
-        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <LineChart fx:id="hash_chart" layoutX="4.0" layoutY="1.0" prefHeight="370.0" prefWidth="593.0" title="Bit evaluation" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="1.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+               </children></AnchorPane>
       </content>
     </Tab>
   </tabs>

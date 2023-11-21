@@ -55,9 +55,8 @@ public class RIPEMD320Hash {
         }
         return hexString.toString();
     }
-}
 
-//
+
 //    public static void main(String[] args) throws IOException {
 //
 //        Security.addProvider(new BouncyCastleProvider());
@@ -72,7 +71,7 @@ public class RIPEMD320Hash {
 //        newMessageBytes = setBit(newMessageBytes, bitPosition, newBitValue);
 //
 //        // Обчислення хешу
-////        byte[] messageBytes = message.getBytes();
+//        // byte[] messageBytes = message.getBytes();
 //        byte[] messageBytes = newMessageBytes;
 //        RIPEMD320Digest digest = new RIPEMD320Digest();
 //        digest.update(messageBytes, 0, messageBytes.length);
@@ -87,7 +86,7 @@ public class RIPEMD320Hash {
 //
 //        System.out.println(countDifferentBits(hash1.getBytes(), hash2.getBytes()));
 //    }
-//
+
 //    public static int countDifferentBits(byte[] hash1, byte[] hash2) {
 //        int bitDifferenceCount = 0;
 //
@@ -105,21 +104,38 @@ public class RIPEMD320Hash {
 //        return bitDifferenceCount;
 //    }
 //
-//    public static byte[] setBit(byte[] bytes, int bitPosition, int newBitValue) {
-//        int byteIndex = bitPosition / 8;
-//        int bitOffset = bitPosition % 8;
-//
-//        if (byteIndex < bytes.length) {
-//            int mask = 1 << bitOffset;
-//
-//            if (newBitValue == 0) {
-//                // Змінити біт на 0
-//                bytes[byteIndex] &= ~mask;
-//            } else if (newBitValue == 1) {
-//                // Змінити біт на 1
-//                bytes[byteIndex] |= mask;
-//            }
-//        }
-//
-//        return bytes;
-//    }
+    public static int countDifferentBits(byte[] hash1, byte[] hash2) {
+        int bitDifferenceCount = 0;
+
+        // Перевірка, чи масиви мають однакову довжину
+        if (hash1.length != hash2.length) {
+            throw new IllegalArgumentException("Arrays must have the same length");
+        }
+
+        // Ітерація по байтам
+        for (int i = 0; i < hash1.length; i++) {
+            // Використовуємо XOR для порівняння бітів
+            int xorResult = hash1[i] ^ hash2[i];
+
+            // Підраховуємо кількість встановлених бітів (1) в xorResult
+            while (xorResult != 0) {
+                bitDifferenceCount += xorResult & 1;
+                xorResult >>>= 1; // Беззнаковий зсув вправо
+            }
+        }
+
+        return bitDifferenceCount;
+    }
+
+    public static byte[] setBit(byte[] bytes, int bitPosition) {
+        int byteIndex = bitPosition / 8;
+        int bitOffset = bitPosition % 8;
+
+        if (byteIndex < bytes.length) {
+            int mask = 1 << bitOffset;
+            bytes[byteIndex] |= mask;  // Встановити біт
+        }
+
+        return bytes;
+    }
+}
