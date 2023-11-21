@@ -2,10 +2,13 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Spinner?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -15,19 +18,19 @@
       <content>
         <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <AnchorPane layoutX="13.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="179.0" prefWidth="573.0" style="-fx-background-color: #00bfff; -fx-background-radius: 10;" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
+                  <AnchorPane layoutX="13.0" layoutY="14.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="573.0" style="-fx-background-color: #00bfff; -fx-background-radius: 10;" AnchorPane.bottomAnchor="213.0" AnchorPane.leftAnchor="13.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0">
                      <children>
                         <Button fx:id="choose_btn" alignment="CENTER" contentDisplay="RIGHT" layoutX="472.0" layoutY="18.0" mnemonicParsing="false" onAction="#fileSelector" style="-fx-background-radius: 5; -fx-background-color: aqua;" text="Choose file 📁" textAlignment="RIGHT" textFill="#0a0a0a" textOverrun="WORD_ELLIPSIS" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="18.0">
                            <font>
                               <Font name="System Bold" size="14.0" />
                            </font>
                         </Button>
-                        <Text fill="WHITE" layoutX="14.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTENT" wrappingWidth="142.13671875" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="17.0">
+                        <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CONTENT" wrappingWidth="142.13671875" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="13.78515625">
                            <font>
                               <Font name="System Bold Italic" size="28.0" />
                            </font>
                         </Text>
-                        <TextArea fx:id="text_preview" layoutX="14.0" layoutY="60.0" prefHeight="66.0" prefWidth="418.0" wrapText="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="60.0" />
+                        <TextArea fx:id="text_preview" layoutX="14.0" layoutY="54.0" prefHeight="81.0" prefWidth="418.0" wrapText="true" AnchorPane.bottomAnchor="9.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="141.0" AnchorPane.topAnchor="54.0" />
                         <Label fx:id="file_path" layoutX="439.0" layoutY="60.0" prefHeight="42.0" prefWidth="120.0" wrapText="true" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="60.0">
                            <font>
                               <Font name="System Bold" size="12.0" />
@@ -38,6 +41,37 @@
                               <Font name="System Bold" size="12.0" />
                            </font>
                         </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="14.0" layoutY="186.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="144.0" prefWidth="573.0" style="-fx-background-color: #00bfff; -fx-background-radius: 10;" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="13.0">
+                     <children>
+                        <HBox alignment="CENTER" layoutX="13.0" layoutY="14.0" prefHeight="24.0" prefWidth="109.0" spacing="5.0" AnchorPane.leftAnchor="13.0" AnchorPane.topAnchor="14.0">
+                           <children>
+                              <Button fx:id="bit_plus_one" mnemonicParsing="false" onAction="#addBitNumber" text="+1" userData="1">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="bit_plus_ten" mnemonicParsing="false" onAction="#addBitNumber" text="+10" userData="10">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="bit_plus_fifty" mnemonicParsing="false" onAction="#addBitNumber" text="+50" userData="50">
+                                 <font>
+                                    <Font size="10.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <TextArea fx:id="hash_text" layoutX="141.0" layoutY="14.0" prefHeight="118.0" prefWidth="418.0" wrapText="true" AnchorPane.bottomAnchor="12.0" AnchorPane.leftAnchor="141.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="14.0" />
+                        <Spinner fx:id="bit_spinner" editable="true" layoutX="14.0" layoutY="42.0" onKeyReleased="#updateBitSpinner" onKeyTyped="#updateBitSpinner" prefHeight="25.0" prefWidth="107.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="42.0" />
+                        <Slider fx:id="bit_slider" blockIncrement="1.0" layoutX="13.0" layoutY="71.0" onMouseDragged="#onSliderChange" prefHeight="14.0" prefWidth="110.0" showTickMarks="true" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="13.0" />
+                        <Button fx:id="bit_change_btn" alignment="CENTER" contentDisplay="RIGHT" layoutX="14.0" layoutY="98.0" mnemonicParsing="false" onAction="#changeBit" prefHeight="30.0" prefWidth="108.0" style="-fx-background-radius: 5; -fx-background-color: aqua;" text="Change 📝" textAlignment="RIGHT" textFill="#4242ff" textOverrun="WORD_ELLIPSIS" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="14.0">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
                </children></AnchorPane>
